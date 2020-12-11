@@ -52,6 +52,14 @@ class ExceptionHandle extends Handle
     {
         // 添加自定义异常处理机制
 
+        if ($e instanceof ValidateException) {
+            return failed($e->getMessage());
+        }
+
+        if ($request->isAjax()) {
+            return failed($e->getMessage());
+        }
+
         // 其他错误交给系统处理
         return parent::render($request, $e);
     }

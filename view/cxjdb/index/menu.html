@@ -1,0 +1,72 @@
+<style>
+    .menu {
+       background-color: #aaa;
+        width: 220px;
+        height: 100%;
+        min-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+
+<!-- Left side column. contains the sidebar -->
+<div class=" menu">
+
+
+    <ul class="sidebar-menu" data-widget="tree">
+        <h3>菜单</h3>
+
+        <li class="treeview ">
+            <div href="">
+                <i class="fa fa-th"></i>
+                <span>数据库管理</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </div>
+
+            <ul class="treeview-menu">
+
+                <li  class="treeview">
+
+                    <a href="<?php echo  url('/cxjdb/database/index',[],false); ?>" target="mainFrame">
+                        <i class="fa-circle-o"></i>
+                        database 列表
+                        <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+
+                </li>
+
+                <li  class="treeview">
+
+                    <a href="<?php echo  url('/cxjdb/table/index',[],false); ?>" target="mainFrame">
+                        <i class="fa-circle-o"></i>
+                        table 列表
+                        <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+
+                </li>
+
+                <li  class="treeview">
+
+                    <a href="<?php echo  url('/cxjdb/field/index',[],false); ?>" target="mainFrame">
+                        <i class="fa-circle-o"></i>
+                        field 列表
+                        <span class="pull-right-container">
+                              <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+
+                </li>
+
+            </ul>
+        </li>
+
+
+    </ul>
+
+</div>
