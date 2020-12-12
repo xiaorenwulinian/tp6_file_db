@@ -6,5 +6,7 @@ return [
     'aaa',
 'bbbb',
 'user',
+'job',
+'podhg',
 
 ];

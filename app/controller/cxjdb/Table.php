@@ -5,6 +5,7 @@ namespace app\controller\cxjdb;
 
 use app\common\cxjdb\lib\DbLib;
 use think\helper\Str;
+use think\Paginator;
 use think\Request;
 use function Composer\Autoload\includeFile;
 
@@ -17,6 +18,10 @@ class Table
      */
     public function index()
     {
+        $params = \request()->param();
+        $curPage =  (int)($params['page'] ?? 1);
+        $pageSize = (int)($params['page_size'] ?? 2);
+
         $databaseName = 'cxj';
         $databasePath = DbLib::getDatabaseFile($databaseName);
         if (!file_exists($databasePath)) {
@@ -37,8 +42,15 @@ class Table
                 'database_name' => $databaseName,
             ];
         }
+
+        $curData = array_slice($data,($curPage - 1) * $pageSize, $pageSize);
+        $list = Paginator::make($curData,$pageSize, $curPage, count($data),false,[
+            'path' => '/cxjdb/table/index'
+        ]);
+//        dd($list);
         $ret = [
-            'data' => $data
+            'data' => $curData,
+            'list' => $list,
         ];
         return \view('cxjdb/table/index', $ret);
     }
